@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://60obmf0g4tip"]
+
+[ext_resource type="FontFile" uid="uid://ccm1fiedy6brt" path="res://assets/Fonts/LUMOS.TTF" id="1_8ilbt"]
+[ext_resource type="Script" path="res://scripts/Player/game_over_ui.gd" id="1_s3ub8"]
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_s3ub8")
+
+[node name="GameOver" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 405.0
+offset_top = 2.0
+offset_right = -410.0
+offset_bottom = -558.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_8ilbt")
+theme_override_font_sizes/font_size = 60
+text = "Game OVER
+"
+
+[node name="Clear" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 76.0
+offset_right = 746.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_8ilbt")
+theme_override_font_sizes/font_size = 32
+text = "You Cleared X Rooms
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 467.0
+offset_top = 214.0
+offset_right = 670.0
+offset_bottom = 280.0
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

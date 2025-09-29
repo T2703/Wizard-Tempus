@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://c0q2bwwvix3om"]
+
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="1_s4oqn"]
+[ext_resource type="PackedScene" uid="uid://njkk4snguwgb" path="res://scenes/Spells/maho.tscn" id="1_wush3"]
+[ext_resource type="Texture2D" uid="uid://ovua3fb1l48r" path="res://assets/Spells/Items/maho_item.png" id="2_7naok"]
+[ext_resource type="AudioStream" uid="uid://cbo3w7xabojf" path="res://sounds/maho.mp3" id="4_eiokk"]
+
+[resource]
+script = ExtResource("1_s4oqn")
+name = "Maho"
+damage = 3
+mana_cost = 8
+cool_down_rate = 0.5
+speed = 300.0
+semi_auto = true
+crit_chance_var = 0.1
+crit_multipier = 1.3
+muzzle_offset = Vector2(9, 3)
+projectile_scene = ExtResource("1_wush3")
+reward_item_icon = ExtResource("2_7naok")
+spell_sound = ExtResource("4_eiokk")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://den4wtinef6dj"]
+
+[ext_resource type="Texture2D" uid="uid://dopamf7o3g212" path="res://assets/enemies/warning.png" id="1_fc8pg"]
+
+[node name="Spawnindicator" type="Node2D"]
+
+[node name="SpawnIndicator" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -1)
+scale = Vector2(0.41, 0.39)
+texture = ExtResource("1_fc8pg")

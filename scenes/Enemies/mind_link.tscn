@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cen2gi58bg42u"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/mind_link.gd" id="1_lm5gi"]
+[ext_resource type="Texture2D" uid="uid://mywjupn7eltt" path="res://assets/enemies/MindLink.png" id="1_ummc5"]
+[ext_resource type="PackedScene" uid="uid://egq102j60uq8" path="res://scenes/Enemies/mind_link_eye.tscn" id="2_ia7dd"]
+[ext_resource type="PackedScene" uid="uid://ddrxmkqjwpx1t" path="res://scenes/Enemies/mind_link_shield.tscn" id="2_p7p75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik4ts"]
+size = Vector2(44, 27)
+
+[node name="MindLink" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_lm5gi")
+eye_scene = ExtResource("2_ia7dd")
+
+[node name="MindLinkShield" parent="." instance=ExtResource("2_p7p75")]
+position = Vector2(-4, 9)
+
+[node name="MindLink" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 2)
+scale = Vector2(2.28125, 2.34375)
+texture = ExtResource("1_ummc5")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_ik4ts")
+
+[node name="EyeSpawnerTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EyeSpawnerTimer" to="." method="_on_eye_spawner_timer_timeout"]

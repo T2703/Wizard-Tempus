@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddrxmkqjwpx1t"]
+
+[ext_resource type="Texture2D" uid="uid://b1i3hmwnpffpm" path="res://assets/enemies/MindLinkSheild.png" id="1_jxwpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bph6j"]
+size = Vector2(113, 84)
+
+[node name="MindLinkShield" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 9
+
+[node name="MindLinkSheild" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(5.74219, 6.89063)
+texture = ExtResource("1_jxwpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -9)
+shape = SubResource("RectangleShape2D_bph6j")

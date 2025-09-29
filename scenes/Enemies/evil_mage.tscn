@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dra06o4i8hi6w"]
+
+[ext_resource type="Script" path="res://scenes/Enemies/evil_mage.gd" id="1_hbf42"]
+[ext_resource type="Texture2D" uid="uid://cwq0dmmhjttlu" path="res://assets/enemies/evil_mage.png" id="1_wk0he"]
+[ext_resource type="PackedScene" uid="uid://cpbut86pc17w6" path="res://scenes/Enemies/projectiles/evil_spell.tscn" id="2_jq0a4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cjvm"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwhwa"]
+size = Vector2(6, 18)
+
+[node name="EvilMage" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_hbf42")
+bullet_scene = ExtResource("2_jq0a4")
+
+[node name="Mage" type="Sprite2D" parent="."]
+position = Vector2(-3, 1)
+texture = ExtResource("1_wk0he")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_2cjvm")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_fwhwa")
+debug_color = Color(0.982167, 0, 0.364616, 0.42)
+
+[node name="SpellTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(5, 1)
+
+[connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]

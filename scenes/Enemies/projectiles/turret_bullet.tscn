@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds7241xp7eafc"]
+
+[ext_resource type="Texture2D" uid="uid://bh0hi8oramfuj" path="res://assets/enemies/projectiles/Turret_Bullet.png" id="1_6om22"]
+[ext_resource type="Script" path="res://scripts/Enemies/projectiles/turret_bullet.gd" id="1_qtn24"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dddw0"]
+radius = 4.0
+
+[node name="TurretBullet" type="Node2D"]
+script = ExtResource("1_qtn24")
+
+[node name="TurretBullet" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+scale = Vector2(2.0625, 2)
+texture = ExtResource("1_6om22")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_dddw0")
+debug_color = Color(0.982661, 0.130377, 0, 0.42)
+
+[node name="BulletLife" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="BulletLife" to="." method="_on_bullet_life_timeout"]

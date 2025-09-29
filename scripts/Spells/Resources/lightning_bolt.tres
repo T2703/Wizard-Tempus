@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://c6kg5upyn0fjl"]
+
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="1_hjhi1"]
+[ext_resource type="PackedScene" uid="uid://hbji316wb5yu" path="res://scenes/Spells/lightning_bolt.tscn" id="1_puf2v"]
+[ext_resource type="Texture2D" uid="uid://xmgpak7p8j4r" path="res://assets/Spells/Items/Lightning_bolt_item.png" id="2_iabnw"]
+[ext_resource type="AudioStream" uid="uid://ckpxlvixol1gb" path="res://sounds/lightning_bolt.mp3" id="4_lbkc6"]
+
+[resource]
+script = ExtResource("1_hjhi1")
+name = "Lightning Bolt"
+damage = 8
+mana_cost = 3
+cool_down_rate = 0.2
+speed = 320.0
+semi_auto = true
+crit_chance_var = 0.1
+crit_multipier = 1.1
+muzzle_offset = Vector2(9, 3)
+projectile_scene = ExtResource("1_puf2v")
+reward_item_icon = ExtResource("2_iabnw")
+spell_sound = ExtResource("4_lbkc6")

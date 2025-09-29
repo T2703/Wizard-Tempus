@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://njkk4snguwgb"]
+
+[ext_resource type="Script" path="res://scripts/Spells/Projectiles/maho.gd" id="1_6g4y7"]
+[ext_resource type="Texture2D" uid="uid://byq0d0qnmcisi" path="res://assets/Spells/Maho.png" id="1_c7lsu"]
+[ext_resource type="PackedScene" uid="uid://cp8wgc3514xfd" path="res://scenes/Spells/maho_small.tscn" id="2_o74pd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4vq"]
+size = Vector2(22, 16)
+
+[node name="Maho" type="Node2D"]
+script = ExtResource("1_6g4y7")
+orb_shot_scene = ExtResource("2_o74pd")
+
+[node name="Maho" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 4.5625)
+scale = Vector2(0.471429, 0.294014)
+texture = ExtResource("1_c7lsu")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 4)
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_ah4vq")
+debug_color = Color(0.990502, 0, 0.277534, 0.42)
+
+[node name="MahoTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="MahoTimer" to="." method="_on_maho_timer_timeout"]

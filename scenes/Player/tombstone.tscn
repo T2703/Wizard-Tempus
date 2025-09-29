@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://1en5eidwoiyd"]
+
+[ext_resource type="Texture2D" uid="uid://bapg304jr8q02" path="res://assets/Player/Tombstone.png" id="1_80uk7"]
+[ext_resource type="AudioStream" uid="uid://cyo1rb1su4w57" path="res://sounds/tombstone_bell.mp3" id="2_8cpwj"]
+[ext_resource type="PackedScene" uid="uid://60obmf0g4tip" path="res://scenes/Player/game_over_ui.tscn" id="3_8m6ax"]
+
+[node name="Tombstone" type="Node2D"]
+
+[node name="Tombstone" type="Sprite2D" parent="."]
+scale = Vector2(2.09375, 1.9375)
+texture = ExtResource("1_80uk7")
+
+[node name="Bell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8cpwj")
+volume_db = -0.16
+autoplay = true
+bus = &"SFX"
+
+[node name="GameOverUI" parent="." instance=ExtResource("3_8m6ax")]

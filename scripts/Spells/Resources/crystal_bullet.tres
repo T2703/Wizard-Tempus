@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://d05kroh6aqdtf"]
+
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="1_4qisj"]
+[ext_resource type="PackedScene" uid="uid://d32cbqnbaslos" path="res://scenes/Spells/crystal_bullet.tscn" id="1_sbo24"]
+[ext_resource type="Texture2D" uid="uid://bokyyfcabgj12" path="res://assets/Spells/Items/Crystal_Bullet_Item.png" id="2_6d0es"]
+[ext_resource type="AudioStream" uid="uid://ipjumo3ay5ws" path="res://sounds/bullet_magic.mp3" id="4_sn6wc"]
+
+[resource]
+script = ExtResource("1_4qisj")
+name = "Crystal Bullet"
+damage = 5
+mana_cost = 2
+cool_down_rate = 0.08
+speed = 500.0
+semi_auto = false
+crit_chance_var = 0.05
+crit_multipier = 1.2
+muzzle_offset = Vector2(9, 3)
+projectile_scene = ExtResource("1_sbo24")
+reward_item_icon = ExtResource("2_6d0es")
+spell_sound = ExtResource("4_sn6wc")

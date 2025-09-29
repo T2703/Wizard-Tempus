@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1k333pjj3eof"]
+
+[ext_resource type="Script" path="res://scripts/Levels/target.gd" id="1_lddf8"]
+[ext_resource type="Texture2D" uid="uid://savgl8cvq3u2" path="res://assets/Levels/target.png" id="1_lesiy"]
+[ext_resource type="PackedScene" uid="uid://cnkio71l8v3i8" path="res://scenes/Levels/portal.tscn" id="2_hnhiv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yk7wk"]
+
+[node name="Target" type="Node2D"]
+script = ExtResource("1_lddf8")
+portal_scene = ExtResource("2_hnhiv")
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(-1, 4.00001)
+scale = Vector2(2.03125, 2.0625)
+texture = ExtResource("1_lesiy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_yk7wk")
+
+[node name="TargetTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="TargetTimer" to="." method="_on_target_timer_timeout"]

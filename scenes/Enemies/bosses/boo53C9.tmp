@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://br1vu33o06oj0"]
+
+[ext_resource type="Texture2D" uid="uid://dglhdjfan537y" path="res://assets/enemies/bosses/Bookulus.png" id="1_ac6lp"]
+[ext_resource type="Script" path="res://scripts/Enemies/bosses/bookulus.gd" id="1_cjubq"]
+[ext_resource type="PackedScene" uid="uid://c8s8tox256db0" path="res://scenes/Enemies/bosses/projectiles/orb_shot.tscn" id="2_jsd8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmaxk"]
+size = Vector2(14, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybam0"]
+size = Vector2(14.5, 18.5)
+
+[node name="Bookulus" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_cjubq")
+orb_shot_scene = ExtResource("2_jsd8a")
+orb_speed = 500.0
+
+[node name="Book" type="Sprite2D" parent="."]
+position = Vector2(-1, 3)
+scale = Vector2(0.921875, 0.9375)
+texture = ExtResource("1_ac6lp")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tmaxk")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0.75, 0.25)
+shape = SubResource("RectangleShape2D_ybam0")
+debug_color = Color(0.982167, 0, 0.364616, 0.42)

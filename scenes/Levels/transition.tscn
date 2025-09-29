@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://xca08rv7253x"]
+
+[ext_resource type="Shader" path="res://scenes/Shaders/transition.gdshader" id="1_4m3cw"]
+[ext_resource type="Script" path="res://scripts/Levels/transition.gd" id="1_xmjnt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c60d"]
+shader = ExtResource("1_4m3cw")
+shader_parameter/cutoff = 0.0
+shader_parameter/scale = 50.0
+shader_parameter/noise_seed = Vector2(12.9898, 78.233)
+
+[sub_resource type="Animation" id="Animation_fykx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1ajmn"]
+resource_name = "wipe_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8wwdm"]
+_data = {
+"RESET": SubResource("Animation_fykx7"),
+"wipe_in": SubResource("Animation_1ajmn")
+}
+
+[node name="Transition" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_xmjnt")
+
+[node name="Screen" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4c60d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wipe" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8wwdm")
+}
+speed_scale = 4.0

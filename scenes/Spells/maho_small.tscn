@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp8wgc3514xfd"]
+
+[ext_resource type="Script" path="res://scripts/Spells/maho_small.gd" id="1_7jv86"]
+[ext_resource type="Texture2D" uid="uid://jrgjvt1hcjy7" path="res://assets/Spells/maho_small.png" id="1_o6n45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve30r"]
+size = Vector2(7, 6.5)
+
+[node name="MahoSmall" type="Node2D"]
+script = ExtResource("1_7jv86")
+
+[node name="MahoSmall" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, -1.19209e-07)
+scale = Vector2(0.136986, 0.106332)
+texture = ExtResource("1_o6n45")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 4)
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -3.75)
+shape = SubResource("RectangleShape2D_ve30r")
+debug_color = Color(0.990502, 0, 0.277534, 0.42)
+
+[node name="MahoTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="MahoTimer" to="." method="_on_maho_timer_timeout"]

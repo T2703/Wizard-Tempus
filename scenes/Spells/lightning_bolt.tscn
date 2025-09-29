@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://hbji316wb5yu"]
+
+[ext_resource type="Texture2D" uid="uid://cvxqsumhq76vv" path="res://assets/Spells/lightning_bolt.png" id="1_npme5"]
+[ext_resource type="Script" path="res://scripts/Spells/Projectiles/lightning_bolt.gd" id="1_tdh1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w250l"]
+size = Vector2(13, 8)
+
+[node name="LightningBolt" type="Node2D"]
+script = ExtResource("1_tdh1w")
+
+[node name="LightningBolt" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(1, 0.75)
+texture = ExtResource("1_npme5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_w250l")
+debug_color = Color(0.990502, 0, 0.277534, 0.42)
+
+[node name="LightningBoltTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="LightningBoltTimer" to="." method="_on_lightning_bolt_timer_timeout"]

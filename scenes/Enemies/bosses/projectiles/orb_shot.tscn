@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8s8tox256db0"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/bosses/projectiles/orb_shot.gd" id="1_4jhfa"]
+[ext_resource type="Texture2D" uid="uid://dnr52py3b33mo" path="res://assets/enemies/bosses/projectiles/orb_shot.png" id="1_c3uil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxjj"]
+size = Vector2(6.5, 8.5)
+
+[node name="OrbShot" type="Node2D"]
+script = ExtResource("1_4jhfa")
+
+[node name="OrbShot" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(1.15625, 1.1875)
+texture = ExtResource("1_c3uil")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.25, -0.75)
+shape = SubResource("RectangleShape2D_ghxjj")
+debug_color = Color(0.985018, 0, 0.337919, 0.42)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

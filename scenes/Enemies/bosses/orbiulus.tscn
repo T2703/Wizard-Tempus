@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7kosvafplgag"]
+
+[ext_resource type="Texture2D" uid="uid://milouby2m06v" path="res://assets/enemies/bosses/Orbiulus.png" id="1_0jsro"]
+[ext_resource type="Script" path="res://scripts/Enemies/bosses/orbiulus.gd" id="1_tccvg"]
+[ext_resource type="PackedScene" uid="uid://c8s8tox256db0" path="res://scenes/Enemies/bosses/projectiles/orb_shot.tscn" id="2_monnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg6yd"]
+size = Vector2(30, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4y7j"]
+size = Vector2(30, 18)
+
+[node name="Orbiulus" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_tccvg")
+orb_shot_scene = ExtResource("2_monnc")
+
+[node name="Orbiulus" type="Sprite2D" parent="."]
+position = Vector2(-1, 3)
+scale = Vector2(1.65625, 1.8125)
+texture = ExtResource("1_0jsro")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vg6yd")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_d4y7j")
+debug_color = Color(0.982167, 0, 0.364616, 0.42)
+
+[node name="OrbShotTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="OrbShotTimer" to="." method="_on_orb_shot_timer_timeout"]

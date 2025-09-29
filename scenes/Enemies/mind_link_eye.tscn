@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://egq102j60uq8"]
+
+[ext_resource type="Texture2D" uid="uid://dis86ut7tf6ox" path="res://assets/enemies/MindLinkEye.png" id="1_8055d"]
+[ext_resource type="Script" path="res://scripts/Enemies/mind_link_eye.gd" id="1_bdonu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wb8p"]
+size = Vector2(9, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_851gd"]
+size = Vector2(17, 3.5)
+
+[node name="MindLinkEye" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_bdonu")
+
+[node name="Eye" type="Sprite2D" parent="."]
+position = Vector2(-3, 1)
+texture = ExtResource("1_8055d")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_6wb8p")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-6.5, -0.75)
+shape = SubResource("RectangleShape2D_851gd")
+debug_color = Color(0.982167, 0, 0.364616, 0.42)
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

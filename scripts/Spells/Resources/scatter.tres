@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://cbi61ast2178d"]
+
+[ext_resource type="Texture2D" uid="uid://b1oih5wvukbl0" path="res://assets/Spells/Items/Scatter_Item.png" id="1_60mmj"]
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="1_jmmni"]
+[ext_resource type="PackedScene" uid="uid://n1cyy7t6nklw" path="res://scenes/Spells/scatter.tscn" id="1_m7qkw"]
+[ext_resource type="AudioStream" uid="uid://dimbempwoi1dn" path="res://sounds/Scatter.mp3" id="3_645gx"]
+
+[resource]
+script = ExtResource("1_jmmni")
+name = "Scatter"
+damage = 4
+mana_cost = 3
+cool_down_rate = 0.2
+speed = 500.0
+semi_auto = false
+crit_chance_var = 0.1
+crit_multipier = 1.3
+muzzle_offset = Vector2(9, 3)
+projectile_scene = ExtResource("1_m7qkw")
+reward_item_icon = ExtResource("1_60mmj")
+spell_sound = ExtResource("3_645gx")
+projectile_count = 5
+spread_angle = 4.0

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=5 format=3 uid="uid://cgxxjrc6tywkk"]
+
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="1_74mfm"]
+[ext_resource type="PackedScene" uid="uid://bp5gp3t5ll7i5" path="res://scenes/Spells/cobalt_bullet.tscn" id="1_ym1fl"]
+[ext_resource type="Texture2D" uid="uid://c2k3q4thg7tbi" path="res://assets/Spells/Items/Cobalt_bullet_item.png" id="2_7nag2"]
+[ext_resource type="AudioStream" uid="uid://ipjumo3ay5ws" path="res://sounds/bullet_magic.mp3" id="4_ss6b5"]
+
+[resource]
+script = ExtResource("1_74mfm")
+name = "Cobalt Bullet"
+damage = 3
+mana_cost = 1
+cool_down_rate = 0.15
+speed = 400.0
+semi_auto = false
+crit_chance_var = 0.05
+crit_multipier = 1.1
+muzzle_offset = Vector2(9, 3)
+projectile_scene = ExtResource("1_ym1fl")
+reward_item_icon = ExtResource("2_7nag2")
+spell_sound = ExtResource("4_ss6b5")

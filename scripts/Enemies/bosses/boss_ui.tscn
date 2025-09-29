@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhjndjdyoefp7"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/bosses/boss_ui.gd" id="1_h4yv0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biwln"]
+bg_color = Color(1, 0.0313726, 0, 1)
+
+[node name="BossUI" type="CanvasLayer"]
+script = ExtResource("1_h4yv0")
+
+[node name="Health" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.994
+offset_left = 415.0
+offset_top = 617.0
+offset_right = -478.0
+offset_bottom = -0.112
+theme_override_styles/fill = SubResource("StyleBoxFlat_biwln")
+show_percentage = false

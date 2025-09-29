@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpbut86pc17w6"]
+
+[ext_resource type="Texture2D" uid="uid://b26mm14rdexic" path="res://assets/enemies/projectiles/Evil_Spell.png" id="1_65hb8"]
+[ext_resource type="Script" path="res://scripts/Enemies/projectiles/evil_spell.gd" id="1_dxgta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxk02"]
+size = Vector2(11.25, 6)
+
+[node name="EvilSpell" type="Node2D"]
+script = ExtResource("1_dxgta")
+
+[node name="EvilSpell" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.75)
+texture = ExtResource("1_65hb8")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.375, -1)
+shape = SubResource("RectangleShape2D_uxk02")
+debug_color = Color(0.982661, 0.130377, 0, 0.42)
+
+[node name="EvilLife" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

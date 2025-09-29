@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://hfctd0gi1vvs"]
+
+[ext_resource type="FontFile" uid="uid://ccm1fiedy6brt" path="res://assets/Fonts/LUMOS.TTF" id="1_f8kaa"]
+[ext_resource type="Script" path="res://scripts/UI/Menu/menu.gd" id="1_re177"]
+[ext_resource type="Texture2D" uid="uid://dmf4vw26flvrh" path="res://assets/UI/Menu/TimeMenu.png" id="2_rfcdc"]
+[ext_resource type="Texture2D" uid="uid://civtbgorkk838" path="res://assets/UI/Menu/TempusMenu.png" id="3_eryyg"]
+[ext_resource type="PackedScene" uid="uid://bhl32ha0ocfhw" path="res://scenes/UI/main_menu_music.tscn" id="5_bq5v7"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_re177")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.256081, 0.291441, 0.833773, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 57.0
+offset_right = 763.0
+offset_bottom = 131.0
+theme_override_fonts/font = ExtResource("1_f8kaa")
+theme_override_font_sizes/font_size = 50
+text = "Wizard Tempus"
+
+[node name="TimeMenu" type="Sprite2D" parent="."]
+position = Vector2(856, 329)
+scale = Vector2(7.9375, 7.46875)
+texture = ExtResource("2_rfcdc")
+
+[node name="TempusMenu" type="Sprite2D" parent="."]
+position = Vector2(847, 179)
+scale = Vector2(7.34375, 7)
+texture = ExtResource("3_eryyg")
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 242.0
+offset_right = 661.0
+offset_bottom = 310.0
+
+[node name="Play" type="Button" parent="MenuButtons"]
+layout_mode = 2
+text = "Play
+"
+
+[node name="Retry" type="Button" parent="MenuButtons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MenuButtons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MainMenuMusic" parent="." instance=ExtResource("5_bq5v7")]
+
+[connection signal="pressed" from="MenuButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MenuButtons/Quit" to="." method="_on_quit_pressed"]

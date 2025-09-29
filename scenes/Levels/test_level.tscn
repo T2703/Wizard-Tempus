@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://u478obc4i45u"]
+
+[ext_resource type="Texture2D" uid="uid://dul10fyr4twqk" path="res://icon.svg" id="1_sqeat"]
+[ext_resource type="PackedScene" uid="uid://dx5qdaqelihmk" path="res://scenes/Player/player.tscn" id="2_qlq6x"]
+[ext_resource type="PackedScene" uid="uid://duyen67ky2y3m" path="res://scenes/Levels/regular_chest.tscn" id="3_t7aif"]
+[ext_resource type="Script" path="res://scripts/Spells/Spell.gd" id="3_uf2f1"]
+[ext_resource type="PackedScene" uid="uid://dra06o4i8hi6w" path="res://scenes/Enemies/evil_mage.tscn" id="4_m36hd"]
+[ext_resource type="Resource" uid="uid://cbi61ast2178d" path="res://scripts/Spells/Resources/scatter.tres" id="4_qey3e"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(68, 60)
+texture = ExtResource("1_sqeat")
+
+[node name="Player" parent="." instance=ExtResource("2_qlq6x")]
+position = Vector2(92, 189)
+spells_inventory = Array[ExtResource("3_uf2f1")]([ExtResource("4_qey3e")])
+
+[node name="RegularChest" parent="." instance=ExtResource("3_t7aif")]
+position = Vector2(153, 113)
+
+[node name="RegularChest2" parent="." instance=ExtResource("3_t7aif")]
+position = Vector2(220, 107)
+
+[node name="RegularChest3" parent="." instance=ExtResource("3_t7aif")]
+position = Vector2(409, 97)
+
+[node name="RegularChest4" parent="." instance=ExtResource("3_t7aif")]
+position = Vector2(325, 110)
+
+[node name="EvilMage" parent="." instance=ExtResource("4_m36hd")]
+position = Vector2(269, 203)

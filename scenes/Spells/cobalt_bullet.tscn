@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp5gp3t5ll7i5"]
+
+[ext_resource type="Texture2D" uid="uid://chg50i0dcmhe5" path="res://assets/Spells/cobalt_bullet.png" id="1_4j885"]
+[ext_resource type="Script" path="res://scripts/Spells/Projectiles/cobalt_bullet.gd" id="1_umin6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_213gj"]
+size = Vector2(8, 3)
+
+[node name="CobaltBullet" type="Node2D"]
+script = ExtResource("1_umin6")
+
+[node name="CobaltBullet" type="Sprite2D" parent="."]
+position = Vector2(0, 4)
+texture = ExtResource("1_4j885")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_213gj")
+debug_color = Color(0.990502, 0, 0.277534, 0.42)
+
+[node name="CobaltTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="CobaltTimer" to="." method="_on_cobalt_timer_timeout"]
